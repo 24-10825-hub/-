@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>지뢰찾기 💣</title>
+  <meta name="description" content="코드 기능과 타임 어택 모드가 있는 지뢰찾기 게임" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-glow"></div>
+
+  <div class="app">
+    <!-- Header -->
+    <header class="header">
+      <h1 class="title">💣 지뢰찾기</h1>
+      <p class="subtitle">숫자 = 깃발 수 → 숫자 클릭 → 자동 오픈!</p>
+    </header>
+
+    <!-- Mode toggle -->
+    <div class="mode-toggle-wrap">
+      <div class="mode-toggle" id="mode-toggle">
+        <button class="mode-btn active" id="mode-normal" data-mode="normal">
+          <span class="mode-icon">🕹️</span>
+          <span class="mode-text">일반 모드</span>
+          <span class="mode-sub">시간 제한 없음</span>
+        </button>
+        <div class="mode-divider"></div>
+        <button class="mode-btn" id="mode-timed" data-mode="timed">
+          <span class="mode-icon">⏰</span>
+          <span class="mode-text">타임 어택</span>
+          <span class="mode-sub">시간 내에 클리어!</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Time limits info (shown in timed mode) -->
+    <div class="time-limits-info" id="time-limits-info" style="display:none">
+      <div class="tl-item">🟢 쉬움 <strong>2:00</strong></div>
+      <div class="tl-sep">·</div>
+      <div class="tl-item">🟡 보통 <strong>8:00</strong></div>
+      <div class="tl-sep">·</div>
+      <div class="tl-item">🔴 어려움 <strong>20:00</strong></div>
+    </div>
+
+    <!-- Controls -->
+    <section class="controls">
+      <div class="difficulty-tabs">
+        <button class="tab active" id="tab-easy"   data-level="easy">쉬움</button>
+        <button class="tab"        id="tab-medium" data-level="medium">보통</button>
+        <button class="tab"        id="tab-hard"   data-level="hard">어려움</button>
+      </div>
+      <button class="btn-new" id="btn-new">🔄 새 게임</button>
+    </section>
+
+    <!-- Stats bar -->
+    <div class="stats-bar">
+      <div class="stat">
+        <span class="stat-icon">💣</span>
+        <span class="stat-label">남은 지뢰</span>
+        <span class="stat-value" id="mine-count">10</span>
+      </div>
+      <div class="stat center">
+        <button class="emoji-btn" id="emoji-btn">😊</button>
+      </div>
+      <div class="stat right">
+        <span class="stat-icon" id="timer-icon">⏱️</span>
+        <span class="stat-label" id="timer-label">시간</span>
+        <span class="stat-value" id="timer">000</span>
+      </div>
+    </div>
+
+    <!-- Countdown bar (only in timed mode) -->
+    <div class="countdown-bar-wrap" id="countdown-bar-wrap" style="display:none">
+      <div class="countdown-bar" id="countdown-bar"></div>
+    </div>
+
+    <!-- Board -->
+    <main class="board-wrapper">
+      <div class="board" id="board"></div>
+    </main>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
